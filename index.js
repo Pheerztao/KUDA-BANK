@@ -11,6 +11,7 @@ app.listen(port, () => {
   
 })
 
+//START OF METHOD
 
 const users = [
   {
@@ -44,11 +45,7 @@ app.get(`/customers`, (req, res) => {
   })
  })
 
-
-  
-
-
-app.post(`/customer`, (req, res) => {
+app.post(`/customer/new`, (req, res) => {
      const id = users.lenght + 1
      const fn = req.body.fn
      const sn = req.body.sn
@@ -70,7 +67,6 @@ app.post(`/customer`, (req, res) => {
       
       users.push(newUser)
      
-     console.log(`data : ${fn} ${sn} ${occ} ${age}`)
      res.status(201).send({
         message : "users created successfully",
           data : newUser
@@ -79,9 +75,13 @@ app.post(`/customer`, (req, res) => {
     }
 
    })
-    
 
+ app.delete(`/customer/:id`, (req, res) => {
 
+        const userid = req.params.id
+ })
+
+// END OFF METHOD
 
 
 app.post(`/customer`, (req, res) => {
