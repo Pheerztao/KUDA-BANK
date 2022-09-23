@@ -19,14 +19,14 @@ const users = [
     sn : "sam",
     occ : "jobless",
     age : 13
-  }
+  },
   {
     id : 2,
     fn : "georde",
     sn : "cool",
     occ : "doctor",
     age : 66
-  }
+  },
   {
     id : 3,
     fn : "izzy",
@@ -38,12 +38,15 @@ const users = [
 ]
 
 app.get(`/customers`, (req, res) => {
-  res.status(400).send{(
+  res.status(400).send({
       messages : `fill the requirements`
-       data : users
-  )}
+      data : users
+  })
+ })
+
+
   
-})
+
 
 app.post(`/customer`, (req, res) => {
      const id = users.lenght + 1
@@ -71,13 +74,16 @@ app.post(`/customer`, (req, res) => {
         message : "users created successfully",
           data : newUser
      })
-})
+
+    }
+
+   })
     
 
 
 
 
-app.post(`/kuda-bank`, (req, res) => {
+app.post(`/customer`, (req, res) => {
  const data = req.body 
  console.log(data)
  if(!data.fn || !data.sn || !data.email){
@@ -89,6 +95,7 @@ app.post(`/kuda-bank`, (req, res) => {
  res.status(201).send({
    message: `User information accepted, Welcome User ${data.sn}, ${data.fn}, ${data.email}`
 })
+
 }
 
 })
