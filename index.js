@@ -39,7 +39,7 @@ const users = [
 
 app.get(`/customers`, (req, res) => {
   res.status(400).send({
-      messages : `fill the requirements`
+      messages : `fill the requirements`,
       data : users
   })
  })
