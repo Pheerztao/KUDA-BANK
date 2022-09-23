@@ -70,6 +70,7 @@ app.post(`/customer`, (req, res) => {
       
       users.push(newUser)
      
+     console.log(`data : ${fn} ${sn} ${occ} ${age}`)
      res.status(201).send({
         message : "users created successfully",
           data : newUser
