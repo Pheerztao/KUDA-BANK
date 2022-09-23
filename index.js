@@ -14,7 +14,7 @@ app.listen(port, () => {
 app.post(`/kuda-bank`, (req, res) => {
  const data = req.body 
  console.log(data)
- if(data.fn == "" || data.sn == "" || data.email == ""  /* or !data.fn || !data.sn etc*/){
+ if(!data.fn || !data.sn || !data.email){
    res.send({
      message: "All fields are required"
 })
