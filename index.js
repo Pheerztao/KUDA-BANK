@@ -7,7 +7,7 @@ app.use(bodyParser.json())
 
 app.listen(port, () => {
 
-  console.log(`The server works for alora : ${port}`)
+  console.log(`The server works for kuda-bank: ${port}`)
   
 })
 
