@@ -74,12 +74,12 @@ app.post(`/customer/new`, (req, res) => {
 
     }
 
-   })
+   }) 
 
- app.delete(`/customer/:id`, (req, res) => {
+ /*app.delete(`/customer/:id`, (req, res) => {
 
         const userid = req.params.id
- })
+ })*/  
 
 // END OFF METHOD
 
