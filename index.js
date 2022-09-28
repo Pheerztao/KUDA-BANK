@@ -1,5 +1,6 @@
 const express = require(`express`)
 const app = express()
+const mysql = require(`mysql`); 
 const bodyParser = require(`body-parser`)
 const port = 4000
 
@@ -99,4 +100,25 @@ app.post(`/customer`, (req, res) => {
 
 }
 
+})
+
+
+//get request doesnt take a body=== u can use a params or a query and the params goes  in a URL
+
+
+// app.get(`/ramsey`, (req, res) => {
+//     message: `hello ramsaey, welcome here`
+//     statusCode: 200
+
+//})
+
+app.get(`/profile/:email/:phine/:id`, (req, res) => {
+
+            const usersEmail = req.params.email
+            const usersPhone = req.params.phone
+            const usersid = req.params.id
+            res.send({
+              message: "you send the params route",
+              data: usersEmail
+            })
 })
