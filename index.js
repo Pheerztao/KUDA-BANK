@@ -1,16 +1,30 @@
+require(`dotenv`).config();
 const express = require(`express`)
 const app = express()
-const mysql = require(`mysql`); 
+const mysql = require(`mysql2`); 
 const bodyParser = require(`body-parser`)
 const port = 4000
-
-app.use(bodyParser.json())
 
 app.listen(port, () => {
 
   console.log(`The server works for kuda-bank: ${port}`)
   
 })
+
+
+app.use(bodyParser.json())
+
+const connection = mysql.createConnection({
+      host : process.env.DATABASE_HOST,
+      user: process.env.DATABASE_USER,
+      port : process.env.DATABASE_PORT,
+      password: process.env.DATABASE_PASSWORD,
+      database : process.env.DATABASE_NAME
+});
+
+connection.connect()
+
+
 
 //START OF METHOD
 
