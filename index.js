@@ -2,6 +2,7 @@ require(`dotenv`).config();
 const express = require(`express`)
 const app = express()
 const mysql = require(`mysql2`); 
+const joi = require(`joy`);
 const bodyParser = require(`body-parser`)
 const port = 4000
 
@@ -136,3 +137,43 @@ app.get(`/profile/:email/:phine/:id`, (req, res) => {
               data: usersEmail
             })
 })
+
+app.post('/create', (req, res) => {
+ 
+  const schema = Joi.object({
+      firstname: Joi.string().min(4).max(30),
+      surnmame:  Joi.string().min(4).max(30).required(),
+      phone: Joi.string().min(11).max(14).requires(),
+      email: Joi.string().email({minDomainSegments: 2, tlds:{allow: [`com`,  `net`] } })
+  })
+
+  const { error, value } = schema.validate(req.body);
+
+  if(error != "undefined"){
+
+    res.status(400).send({
+        message: 'validation error'
+    })
+  }
+
+  const { firstname, othername, email, phone } = req.body
+
+  try {
+     if (!firstname || !othername || !email || !phone){
+        throw new Error ('All fields are required')
+     }
+
+     connection.query();
+
+}catch (e) {
+    res.status(400).json({
+       message: e.message
+    })
+}
+})
+
+// let customer_id = uuidv4()
+// connection.query(
+//    `insert into values (customer_id,firstname, othernames, phone, email)
+//    values('${customer_id}','${firstname}','${othernames}','${{')`
+// )
